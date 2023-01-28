@@ -21,8 +21,27 @@ public class Receita {
     private Conta conta;
     private String tipoReceita;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    public Receita() {
+    }
+
+    public Receita(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Conta getConta() {
         return conta;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public void setConta(Conta conta) {

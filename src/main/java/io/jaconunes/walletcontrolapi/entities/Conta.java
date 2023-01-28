@@ -1,9 +1,6 @@
 package io.jaconunes.walletcontrolapi.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Conta {
@@ -16,6 +13,25 @@ public class Conta {
     private String instituicaoFinanceira;
 
     private String tipoMoeda;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    public Conta() {
+    }
+
+    public Conta(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public String getTipoMoeda() {
         return tipoMoeda;

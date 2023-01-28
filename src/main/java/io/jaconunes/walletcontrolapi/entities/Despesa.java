@@ -20,6 +20,25 @@ public class Despesa {
     @JoinColumn(name = "conta_id")
     private Conta conta;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    public Despesa() {
+    }
+
+    public Despesa(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Conta getConta() {
         return conta;
     }
