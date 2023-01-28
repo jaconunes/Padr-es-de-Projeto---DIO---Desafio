@@ -5,20 +5,29 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "tb_receita")
 public class Receita {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JoinColumn(name = "id_receita")
+    @Column(name = "receita_id")
     private Long id;
-    @JoinColumn(name = "valor_receita")
+    @Column(name = "valor_receita")
     private Double valor;
+
+    @Column(name = "data_recebimento")
     private LocalDate dataRecebimento;
+
+    @Column(name = "data_recebimento_esperado")
     private LocalDate dataRecebimentoEsperado;
+
+    @Column(name = "descricao")
     private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "conta_id")
     private Conta conta;
+
+    @Column(name = "tipo_receita")
     private String tipoReceita;
 
     @ManyToOne

@@ -1,6 +1,8 @@
 package io.jaconunes.walletcontrolapi.servive;
 
+import io.jaconunes.walletcontrolapi.entities.Conta;
 import io.jaconunes.walletcontrolapi.entities.Despesa;
+import io.jaconunes.walletcontrolapi.entities.Receita;
 import io.jaconunes.walletcontrolapi.entities.Usuario;
 
 import java.util.Set;
@@ -17,6 +19,9 @@ public interface UsuarioService {
 
     void deletar(Long id);
 
-    Set<Despesa> buscarDespesas();
+    Set<Despesa> buscarDespesas(Long userId);
 
+    Set<Receita> buscarReceitas(Long userId);
+
+    Set<Conta> buscarContas(Long userId);
 }

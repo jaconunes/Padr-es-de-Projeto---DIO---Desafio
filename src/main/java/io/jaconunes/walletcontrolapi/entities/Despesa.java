@@ -5,16 +5,22 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "tb_despesa")
 public class Despesa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JoinColumn(name = "id_despesa")
+    @Column(name = "despesa_id")
     private Long id;
-    @JoinColumn(name = "valor_despesa")
+    @Column(name = "valor_despesa")
     private Double valor;
+    @Column(name = "data_pagamento")
     private LocalDate dataPagamento;
-    private LocalDate getDataPagamentoEsperado;
+
+    @Column(name = "data_pagamento_esperado")
+    private LocalDate DataPagamentoEsperado;
+
+    @Column(name = "tipo_despesa")
     private String tipoDespesa;
     @ManyToOne
     @JoinColumn(name = "conta_id")
@@ -71,19 +77,19 @@ public class Despesa {
         this.dataPagamento = dataPagamento;
     }
 
-    public LocalDate getGetDataPagamentoEsperado() {
-        return getDataPagamentoEsperado;
-    }
-
-    public void setGetDataPagamentoEsperado(LocalDate getDataPagamentoEsperado) {
-        this.getDataPagamentoEsperado = getDataPagamentoEsperado;
-    }
-
     public String getTipoDespesa() {
         return tipoDespesa;
     }
 
     public void setTipoDespesa(String tipoDespesa) {
         this.tipoDespesa = tipoDespesa;
+    }
+
+    public LocalDate getDataPagamentoEsperado() {
+        return DataPagamentoEsperado;
+    }
+
+    public void setDataPagamentoEsperado(LocalDate dataPagamentoEsperado) {
+        DataPagamentoEsperado = dataPagamentoEsperado;
     }
 }

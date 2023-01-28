@@ -1,22 +1,31 @@
 package io.jaconunes.walletcontrolapi.servive.impl;
 
+import io.jaconunes.walletcontrolapi.entities.Conta;
 import io.jaconunes.walletcontrolapi.entities.Despesa;
+import io.jaconunes.walletcontrolapi.entities.Receita;
 import io.jaconunes.walletcontrolapi.entities.Usuario;
+import io.jaconunes.walletcontrolapi.repository.ContaRepository;
 import io.jaconunes.walletcontrolapi.repository.DespesaRepository;
+import io.jaconunes.walletcontrolapi.repository.ReceitaRepository;
 import io.jaconunes.walletcontrolapi.repository.UsuarioRepository;
 import io.jaconunes.walletcontrolapi.servive.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
     @Autowired
     private DespesaRepository despesaRepository;
+    @Autowired
+    private ReceitaRepository receitaRepository;
+    @Autowired
+    private ContaRepository contaRepository;
 
     @Override
     public Iterable<Usuario> buscarTodos() {
@@ -49,7 +58,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Set<Despesa> buscarDespesas() {
-        return null;
+    public Set<Despesa> buscarDespesas(Long userId) {
+        return despesaRepository.findDespesaByUserId(userId);
+    }
+
+    @Override
+    public Set<Receita> buscarReceitas(Long userId) {
+        return receitaRepository.findReceitaByUserId(userId);
+    }
+
+    @Override
+    public Set<Conta> buscarContas(Long userId) {
+        return contaRepository.findContaByUserId(userId);
     }
 }

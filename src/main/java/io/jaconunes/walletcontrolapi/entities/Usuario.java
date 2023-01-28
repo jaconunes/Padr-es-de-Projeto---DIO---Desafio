@@ -1,23 +1,23 @@
 package io.jaconunes.walletcontrolapi.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
+@Table(name = "tb_usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "usuario_id")
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "username")
     private String username;
-    private Set<Conta> contas;
-    private Set<Receita> receitas;
-    private Set<Despesa> despesas;
 
     public Long getId() {
         return id;
@@ -41,30 +41,6 @@ public class Usuario {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Set<Conta> getContas() {
-        return contas;
-    }
-
-    public void setContas(Set<Conta> contas) {
-        this.contas = contas;
-    }
-
-    public Set<Receita> getReceitas() {
-        return receitas;
-    }
-
-    public void setReceitas(Set<Receita> receitas) {
-        this.receitas = receitas;
-    }
-
-    public Set<Despesa> getDespesas() {
-        return despesas;
-    }
-
-    public void setDespesas(Set<Despesa> despesas) {
-        this.despesas = despesas;
     }
 
 }

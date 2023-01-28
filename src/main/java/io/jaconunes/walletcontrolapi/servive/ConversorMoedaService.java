@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author jaconunes
  */
 
-@FeignClient(name = "Cotações de Moedas", url = "https://economia.awesomeapi.com.br/json/last")
+@FeignClient(name = "AwesomeApi", url = "https://economia.awesomeapi.com.br/json/last")
 public interface ConversorMoedaService {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{moeda}-BRL")
