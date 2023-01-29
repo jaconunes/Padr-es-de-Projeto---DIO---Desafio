@@ -27,7 +27,7 @@ public class ContaController {
 
     @GetMapping("/{id}/{moeda}")
     public ResponseEntity<Conta> consultarSaldoContaEmOutraMoeda(@PathVariable("id") Long id, @PathVariable("moeda") String moeda){
-        return ResponseEntity.ok(contaService.buscarPorId(id));
+        return ResponseEntity.ok(contaService.cotacaoSaldo(id, moeda));
     }
 
     @PostMapping

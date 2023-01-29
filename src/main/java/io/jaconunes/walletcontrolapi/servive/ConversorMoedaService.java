@@ -2,6 +2,7 @@ package io.jaconunes.walletcontrolapi.servive;
 
 import io.jaconunes.walletcontrolapi.entities.Moeda;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "AwesomeApi", url = "https://economia.awesomeapi.com.br/json/last")
 public interface ConversorMoedaService {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{moeda}-BRL")
+    @GetMapping(value = "/{moeda}-BRL")
     Moeda consultarMoeda(@PathVariable("moeda") String moeda);
 
 }

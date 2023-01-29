@@ -19,6 +19,23 @@ public class Moeda {
     private String timestamp;
     private String createDate;
 
+    public Moeda(String code, String codein, String name, String high, String low, String varBid, String pctChange, String bid, String ask, String timestamp, String createDate) {
+        this.code = code;
+        this.codein = codein;
+        this.name = name;
+        this.high = high;
+        this.low = low;
+        this.varBid = varBid;
+        this.pctChange = pctChange;
+        this.bid = bid;
+        this.ask = ask;
+        this.timestamp = timestamp;
+        this.createDate = createDate;
+    }
+
+    public Moeda() {
+    }
+
     public String getCode() {
         return code;
     }
@@ -105,5 +122,22 @@ public class Moeda {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Moeda{" +
+                "code='" + code + '\'' +
+                ", codein='" + codein + '\'' +
+                ", name='" + name + '\'' +
+                ", high='" + high + '\'' +
+                ", low='" + low + '\'' +
+                ", varBid='" + varBid + '\'' +
+                ", pctChange='" + pctChange + '\'' +
+                ", bid='" + bid + '\'' +
+                ", ask='" + ask + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", createDate='" + createDate + '\'' +
+                '}';
     }
 }

@@ -16,5 +16,5 @@ public interface ContaService {
 
     void deletar(Long id);
 
-   // Double cotacaoSaldo(Long id, String moeda);
+    Conta cotacaoSaldo(Long id, String moeda);
 }

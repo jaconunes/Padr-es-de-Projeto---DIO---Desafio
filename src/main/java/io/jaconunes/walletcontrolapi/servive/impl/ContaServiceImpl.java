@@ -52,16 +52,16 @@ public class ContaServiceImpl implements ContaService {
     public void deletar(Long id) {
         contaRepository.deleteById(id);
     }
-//
-//    @Override
-//    public Conta cotacaoSaldo(Long id, String moeda) {
-//        Optional<Conta> contaBd = contaRepository.findById(id);
-//        Moeda cotacao = conversorMoedaService.consultarMoeda(moeda);
-//        Double saldo = null;
-//        if(contaBd.isPresent()){
-//            saldo = contaBd.get().getSaldo() * Double.parseDouble(cotacao.getHigh());
-//
-//        }
-//        return contaBd.get().;
-//    }
+
+    @Override
+    public Conta cotacaoSaldo(Long id, String moeda) {
+        Optional<Conta> contaBd = contaRepository.findById(id);
+        Moeda cotacao = conversorMoedaService.consultarMoeda(moeda);
+        Double saldo = null;
+        if(contaBd.isPresent()){
+            saldo = contaBd.get().getSaldo() * Double.parseDouble(cotacao.getHigh());
+        }
+        contaBd.get().setSaldo(saldo);
+        return contaBd.get();
+    }
 }
