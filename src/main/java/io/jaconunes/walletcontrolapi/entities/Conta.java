@@ -1,5 +1,7 @@
 package io.jaconunes.walletcontrolapi.entities;
 
+import io.jaconunes.walletcontrolapi.servive.ContaService;
+import io.jaconunes.walletcontrolapi.servive.Moedas;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,8 +20,7 @@ public class Conta {
     private String instituicaoFinanceira;
 
     @Column(name = "tipo_moeda")
-    private String tipoMoeda;
-
+    private String tipoMoeda = String.valueOf(Moedas.BRL);
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
