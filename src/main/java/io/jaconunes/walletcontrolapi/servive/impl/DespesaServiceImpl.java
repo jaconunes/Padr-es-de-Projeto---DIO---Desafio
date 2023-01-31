@@ -1,6 +1,8 @@
 package io.jaconunes.walletcontrolapi.servive.impl;
 
+import io.jaconunes.walletcontrolapi.entities.Conta;
 import io.jaconunes.walletcontrolapi.entities.Despesa;
+import io.jaconunes.walletcontrolapi.repository.ContaRepository;
 import io.jaconunes.walletcontrolapi.repository.DespesaRepository;
 import io.jaconunes.walletcontrolapi.servive.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ public class DespesaServiceImpl implements DespesaService {
 
     @Autowired
     private DespesaRepository despesaRepository;
+    @Autowired
+    private ContaRepository contaRepository;
 
     @Override
     public Iterable<Despesa> buscarTodos() {
@@ -27,6 +31,9 @@ public class DespesaServiceImpl implements DespesaService {
 
     @Override
     public void inserir(Despesa despesa) {
+        Optional<Conta> contaBd = contaRepository.findById(despesa.getConta().getId());
+        contaBd.get().setSaldo(contaBd.get().getSaldo() - despesa.getValor());
+        contaRepository.save(contaBd.get());
         despesaRepository.save(despesa);
     }
 

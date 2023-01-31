@@ -1,5 +1,6 @@
 package io.jaconunes.walletcontrolapi.controller;
 
+import io.jaconunes.walletcontrolapi.dto.Transferencia;
 import io.jaconunes.walletcontrolapi.entities.Conta;
 import io.jaconunes.walletcontrolapi.entities.Despesa;
 import io.jaconunes.walletcontrolapi.repository.ContaRepository;
@@ -45,6 +46,12 @@ public class ContaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Conta> deletar(@PathVariable("id") Long id){
         contaService.deletar(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/transferencia")
+    public ResponseEntity<Transferencia> transferir(@RequestBody Transferencia transferencia){
+        contaService.transferir(transferencia);
         return ResponseEntity.ok().build();
     }
 }

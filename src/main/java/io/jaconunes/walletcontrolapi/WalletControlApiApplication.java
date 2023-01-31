@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
 @SpringBootApplication
-public class WalletControlApiApplication implements CommandLineRunner {
+public class WalletControlApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WalletControlApiApplication.class, args);
@@ -17,10 +17,4 @@ public class WalletControlApiApplication implements CommandLineRunner {
 
 	@Autowired
 	private ConversorMoedaService conversorMoedaService;
-
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println(conversorMoedaService.consultarMoeda("USD"));
-
-	}
 }
