@@ -4,6 +4,7 @@ import io.jaconunes.walletcontrolapi.entities.Conta;
 import io.jaconunes.walletcontrolapi.entities.Despesa;
 import io.jaconunes.walletcontrolapi.entities.Receita;
 import io.jaconunes.walletcontrolapi.entities.Usuario;
+import io.jaconunes.walletcontrolapi.handler.BusinessException;
 import io.jaconunes.walletcontrolapi.repository.ContaRepository;
 import io.jaconunes.walletcontrolapi.repository.DespesaRepository;
 import io.jaconunes.walletcontrolapi.repository.ReceitaRepository;
@@ -39,8 +40,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void inserir(Usuario cliente) {
-        usuarioRepository.save(cliente);
+    public void inserir(Usuario usuario) {
+        usuarioRepository.save(usuario);
     }
 
     @Override
