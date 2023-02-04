@@ -30,17 +30,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Iterable<Usuario> buscarTodos() {
+        if(usuarioRepository.findAll().isEmpty()){
+            throw new BusinessException("Não há itens para serem listados!");
+        }
         return usuarioRepository.findAll();
     }
 
     @Override
     public Usuario buscarPorId(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if(usuario.isEmpty()){
+            throw new BusinessException("O usuário informado não foi encontrado!");
+        }
         return usuario.get();
     }
 
     @Override
     public void inserir(Usuario usuario) {
+        if(usuario.getNome() == null || usuario.getUsername() == null)
+            throw new BusinessException("Os campos nome e usuário são obrigatórios!");
         usuarioRepository.save(usuario);
     }
 
@@ -49,27 +57,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         Optional<Usuario> usuarioBd = usuarioRepository.findById(id);
         if (usuarioBd.isPresent()){
             usuarioRepository.save(usuario);
+        } else {
+            throw new BusinessException("O usuário informado não foi encontrado!");
         }
-
     }
 
     @Override
     public void deletar(Long id) {
         usuarioRepository.deleteById(id);
-    }
-
-    @Override
-    public Set<Despesa> buscarDespesas(Long userId) {
-        return despesaRepository.findDespesaByUserId(userId);
-    }
-
-    @Override
-    public Set<Receita> buscarReceitas(Long userId) {
-        return receitaRepository.findReceitaByUserId(userId);
-    }
-
-    @Override
-    public Set<Conta> buscarContas(Long userId) {
-        return contaRepository.findContaByUserId(userId);
     }
 }

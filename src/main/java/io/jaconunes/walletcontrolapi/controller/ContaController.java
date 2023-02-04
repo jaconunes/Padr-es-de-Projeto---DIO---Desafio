@@ -2,10 +2,7 @@ package io.jaconunes.walletcontrolapi.controller;
 
 import io.jaconunes.walletcontrolapi.dto.Transferencia;
 import io.jaconunes.walletcontrolapi.entities.Conta;
-import io.jaconunes.walletcontrolapi.entities.Despesa;
-import io.jaconunes.walletcontrolapi.repository.ContaRepository;
 import io.jaconunes.walletcontrolapi.servive.ContaService;
-import io.jaconunes.walletcontrolapi.servive.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
